@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import IUserInput from "./IUserInput";
 import PersonalDataView from "./PersonalDataView";
 
@@ -18,66 +18,80 @@ export default function PersonalDataInput({ handleData }: Props) {
     phone: "",
   };
 
-  const firstNameInput = useRef<HTMLInputElement | null>(null);
-  const lastNameInput = useRef<HTMLInputElement | null>(null);
-  const birthdayInput = useRef<HTMLInputElement | null>(null);
-  const streetInput = useRef<HTMLInputElement | null>(null);
-  const zipCodeInput = useRef<HTMLInputElement | null>(null);
-  const countryInput = useRef<HTMLInputElement | null>(null);
-  const emailInput = useRef<HTMLInputElement | null>(null);
-  const phonenNumberInput = useRef<HTMLInputElement | null>(null);
-
   const [personalData, setPersonalData] = useState(userInputData);
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setPersonalData({
-      ...personalData,
-      firstname: firstNameInput.current?.value,
-      lastname: lastNameInput.current?.value,
-      birthday: birthdayInput.current?.value,
-      street: streetInput.current?.value,
-      zipCode: zipCodeInput.current?.value,
-      country: countryInput.current?.value,
-      email: emailInput.current?.value,
-      phone: phonenNumberInput.current?.value,
-    });
+
+  const changeInput = (e: ChangeEvent<HTMLInputElement>, type: string) => {
+    setPersonalData({ ...personalData, [type]: e?.target?.value });
+    //console.log(e);
   };
 
   return (
     <>
       <form onSubmit={(e) => handleData(e, personalData)}>
-        <button type="submit">save</button>
+        <button type="submit">save</button>zipCode
         <div>
           <label>First Name:</label>
-          <input type="text" ref={firstNameInput} />
+          <input
+            type="text"
+            value={personalData.firstname}
+            onChange={(e) => changeInput(e, "firstname")}
+          />
         </div>
         <div>
           <label>Last Name:</label>
-          <input type="text" ref={lastNameInput} />
+          <input
+            type="text"
+            value={personalData.lastname}
+            onChange={(e) => changeInput(e, "lastname")}
+          />
         </div>
         <div>
           <label>Birthdate:</label>
-          <input type="date" ref={birthdayInput} />
+          <input
+            type="date"
+            value={personalData.birthday}
+            onChange={(e) => changeInput(e, "birthday")}
+          />
         </div>
         <div>
           <label>Street:</label>
-          <input type="text" ref={streetInput} />
+          <input
+            type="text"
+            value={personalData.street}
+            onChange={(e) => changeInput(e, "street")}
+          />
         </div>
         <div>
           <label>ZIP-Code:</label>
-          <input type="number" ref={zipCodeInput} />
+          <input
+            type="number"
+            value={personalData.zipCode}
+            onChange={(e) => changeInput(e, "zipCode")}
+          />
         </div>
         <div>
           <label>County:</label>
-          <input type="text" ref={countryInput} />
+          <input
+            type="text"
+            value={personalData.country}
+            onChange={(e) => changeInput(e, "country")}
+          />
         </div>
         <div>
           <label>E-Mail:</label>
-          <input type="email" ref={emailInput} />
+          <input
+            type="email"
+            value={personalData.email}
+            onChange={(e) => changeInput(e, "email")}
+          />
         </div>
         <div>
           <label>Phone Number:</label>
-          <input type="string" ref={phonenNumberInput} />
+          <input
+            type="string"
+            value={personalData.phone}
+            onChange={(e) => changeInput(e, "phone")}
+          />
         </div>
       </form>
       <PersonalDataView data={personalData} />
