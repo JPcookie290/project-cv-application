@@ -1,12 +1,13 @@
 import PersonalData from "./components/PersonalData";
 import EducationData from "./components/EducationData";
-import { FormEvent, useState } from "react";
+import WorkHistoryData from "./components/WorkHistoryData";
 
 function App() {
   return (
     <>
       <PersonalData />
       <EducationData />
+      <WorkHistoryData />
     </>
   );
 }

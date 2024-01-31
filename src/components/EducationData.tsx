@@ -28,6 +28,7 @@ export default function EducationData() {
   };
   return (
     <>
+      <h2>School Career</h2>
       <EducationDataInput
         school={singleSchool}
         setSchool={setSingleSchool}

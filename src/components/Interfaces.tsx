@@ -15,4 +15,11 @@ interface ISchoolInput {
   end: string;
 }
 
-export type { ISchoolInput };
+interface IWorkInput {
+  name: string;
+  title: string;
+  start: string;
+  end: string;
+}
+
+export type { ISchoolInput, IWorkInput };

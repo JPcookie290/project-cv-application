@@ -4,27 +4,31 @@ interface Props {
   remove: (name: string) => void;
 }
 export default function EducationDataView({ schools, remove }: Props) {
+  const checkDate = (date: string) => {
+    if (date === "") {
+      return "current";
+    } else {
+      return date;
+    }
+  };
   return (
-    <>
-      <h2>School Career</h2>
-      <table>
-        <tr>
-          <th>Institute</th>
-          <th>Start</th>
-          <th>End</th>
-          <th></th>
+    <table>
+      <tr>
+        <th>Institute</th>
+        <th>Start</th>
+        <th>End</th>
+        <th></th>
+      </tr>
+      {schools.map((school) => (
+        <tr key={school.name}>
+          <td>{school.name}</td>
+          <td>{school.start}</td>
+          <td>{checkDate(school.end)}</td>
+          <td>
+            <button onClick={() => remove(school.name)}>X</button>
+          </td>
         </tr>
-        {schools.map((school) => (
-          <tr key={school.name}>
-            <td>{school.name}</td>
-            <td>{school.start}</td>
-            <td>{school.end}</td>
-            <td>
-              <button onClick={() => remove(school.name)}>X</button>
-            </td>
-          </tr>
-        ))}
-      </table>
-    </>
+      ))}
+    </table>
   );
 }
