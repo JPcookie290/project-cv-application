@@ -8,3 +8,11 @@ export default interface IUserInput {
   email?: string;
   phone?: string;
 }
+
+interface ISchoolInput {
+  name: string;
+  start: string;
+  end: string;
+}
+
+export type { ISchoolInput };

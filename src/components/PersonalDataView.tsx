@@ -1,4 +1,4 @@
-import IUserInput from "./IUserInput";
+import IUserInput from "./Interfaces";
 
 interface Props {
   data: IUserInput;
@@ -12,11 +12,10 @@ export default function PersonalDataView({ data }: Props) {
       </h1>
       <h2>Birthday</h2>
       <h3>{data.birthday}</h3>
-      <h2>Adress</h2>
+      <h2>Address</h2>
       <h3>
-        {data.street}, {data.zipCode}
+        {data.street}, {data.zipCode} {data.country}
       </h3>
-      <h3>{data.country}</h3>
       <h2>E-Mail</h2>
       <h3>{data.email}</h3>
       <h2>Phone</h2>
