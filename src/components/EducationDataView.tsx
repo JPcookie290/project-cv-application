@@ -25,7 +25,9 @@ export default function EducationDataView({ schools, remove }: Props) {
           <td>{school.start}</td>
           <td>{checkDate(school.end)}</td>
           <td>
-            <button onClick={() => remove(school.name)}>X</button>
+            <button onClick={() => remove(school.name)}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
           </td>
         </tr>
       ))}

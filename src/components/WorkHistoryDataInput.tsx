@@ -23,7 +23,7 @@ export default function WorkHistoryDataInput({
   return (
     <form onSubmit={addWork}>
       <div>
-        <label>Work Place:</label>
+        <label>Company:</label>
         <input
           type="text"
           value={work.name}
@@ -38,21 +38,25 @@ export default function WorkHistoryDataInput({
           onChange={(e) => changeData(e, "title")}
         />
       </div>
-      <div>
-        <label>Start:</label>
-        <input
-          type="date"
-          value={work.start}
-          onChange={(e) => changeData(e, "start")}
-        />
-        <label>End:</label>
-        <input
-          type="date"
-          value={work.end}
-          onChange={(e) => changeData(e, "end")}
-        />
+      <div className="threeInputBackToBack">
+        <div>
+          <label>Start:</label>
+          <input
+            type="date"
+            value={work.start}
+            onChange={(e) => changeData(e, "start")}
+          />
+        </div>
+        <div>
+          <label>End:</label>
+          <input
+            type="date"
+            value={work.end}
+            onChange={(e) => changeData(e, "end")}
+          />
+        </div>
+        <button type="submit">add</button>
       </div>
-      <button type="submit">add</button>
     </form>
   );
 }

@@ -25,21 +25,25 @@ export default function EducationDataInput({
           onChange={(e) => changeData(e, "name")}
         />
       </div>
-      <div>
-        <label>Start:</label>
-        <input
-          type="date"
-          value={school.start}
-          onChange={(e) => changeData(e, "start")}
-        />
-        <label>End:</label>
-        <input
-          type="date"
-          value={school.end}
-          onChange={(e) => changeData(e, "end")}
-        />
+      <div className="threeInputBackToBack">
+        <div>
+          <label>Start:</label>
+          <input
+            type="date"
+            value={school.start}
+            onChange={(e) => changeData(e, "start")}
+          />
+        </div>
+        <div>
+          <label>End:</label>
+          <input
+            type="date"
+            value={school.end}
+            onChange={(e) => changeData(e, "end")}
+          />
+        </div>
+        <button type="submit">add</button>
       </div>
-      <button type="submit">add</button>
     </form>
   );
 }

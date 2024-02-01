@@ -15,7 +15,8 @@ export default function WorkHistoryData() {
   const addWork = (e: FormEvent) => {
     e.preventDefault();
     setWorkHistory([...workHistory, work]);
-    console.log(workHistory);
+    //console.log(workHistory);
+    setWork({ name: "", title: "", start: "", end: "" });
   };
   const removeWork = (name: string, title: string) => {
     setWorkHistory((prevWork) => {
@@ -24,11 +25,28 @@ export default function WorkHistoryData() {
       });
     });
   };
+  const changeButton = () => {
+    setShowForm(!showForm);
+  };
+  const [showForm, setShowForm] = useState(false);
   return (
-    <>
+    <div className="workData">
       <h2>Work History</h2>
-      <WorkHistoryDataInput work={work} setWork={setWork} addWork={addWork} />
+      {!showForm && (
+        <button className="addToTimeLine" onClick={() => changeButton()}>
+          <i className="fa-solid fa-square-plus"></i>
+        </button>
+      )}
+      {showForm && (
+        <button className="addToTimeLine" onClick={() => changeButton()}>
+          <i className="fa-solid fa-square-minus"></i>
+        </button>
+      )}
+
+      {showForm && (
+        <WorkHistoryDataInput work={work} setWork={setWork} addWork={addWork} />
+      )}
       <WorkHistoryDataView workHistory={workHistory} remove={removeWork} />
-    </>
+    </div>
   );
 }

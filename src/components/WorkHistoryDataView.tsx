@@ -13,7 +13,7 @@ export default function WorkHistoryDataView({ workHistory, remove }: Props) {
     }
   };
   return (
-    <table>
+    <table className="workHistoryList">
       <tr>
         <th>Place of Employment</th>
         <th>Work Title</th>
@@ -28,7 +28,9 @@ export default function WorkHistoryDataView({ workHistory, remove }: Props) {
           <td>{work.start}</td>
           <td>{checkDate(work.end)}</td>
           <td>
-            <button onClick={() => remove(work.name, work.title)}>X</button>
+            <button onClick={() => remove(work.name, work.title)}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
           </td>
         </tr>
       ))}

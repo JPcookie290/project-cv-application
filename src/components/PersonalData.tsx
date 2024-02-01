@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import PersonalDataInput from "./PersonalDataInput";
 import IUserInput from "./Interfaces";
 import PersonalDataView from "./PersonalDataView";
@@ -16,23 +16,29 @@ export default function PersonalData() {
   });
   const changeButton = () => {
     setShowForm(!showForm);
+    setDetail(!showDetail);
   };
-  const [showForm, setShowForm] = useState(false);
-  const handleData = (event: FormEvent, data: IUserInput) => {
-    event.preventDefault();
-    //console.log("test");
+  const [showForm, setShowForm] = useState(true);
+  const [showDetail, setDetail] = useState(false);
+  const changeInput = (e: ChangeEvent<HTMLInputElement>, type: string) => {
+    setPersonalData({ ...personalData, [type]: e?.target?.value });
+    //console.log(e);
+  };
 
-    setPersonalData({
-      ...data,
-    });
-    // console.log(data);
-    // console.log(personalData);
-  };
   return (
-    <>
-      <button onClick={() => changeButton()}>Edit</button>
-      {showForm && <PersonalDataInput handleData={handleData} />}
-      <PersonalDataView data={personalData} />
-    </>
+    <div className="personalData">
+      {showForm && (
+        <button className="editBtn" onClick={() => changeButton()}>
+          Safe
+        </button>
+      )}
+      {!showForm && (
+        <button className="editBtn" onClick={() => changeButton()}>
+          Edit
+        </button>
+      )}
+      {showForm && <PersonalDataInput handleData={changeInput} />}
+      {showDetail && <PersonalDataView data={personalData} />}
+    </div>
   );
 }
