@@ -33,16 +33,21 @@ export default function EducationData() {
   const [showForm, setShowForm] = useState(false);
   return (
     <div className="educationData">
-      <h2>School Career</h2>
       {!showForm && (
-        <button className="addToTimeLine" onClick={() => changeButton()}>
-          <i className="fa-solid fa-square-plus"></i>
-        </button>
+        <div className="headingList">
+          <h2>School Career</h2>
+          <button className="addToTimeLine" onClick={() => changeButton()}>
+            <i className="fa-solid fa-square-plus"></i>
+          </button>
+        </div>
       )}
       {showForm && (
-        <button className="addToTimeLine" onClick={() => changeButton()}>
-          <i className="fa-solid fa-square-minus"></i>
-        </button>
+        <div className="headingList">
+          <h2>School Career</h2>
+          <button className="addToTimeLine" onClick={() => changeButton()}>
+            <i className="fa-solid fa-square-minus"></i>
+          </button>
+        </div>
       )}
       {showForm && (
         <EducationDataInput

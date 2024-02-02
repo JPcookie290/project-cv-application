@@ -31,16 +31,21 @@ export default function WorkHistoryData() {
   const [showForm, setShowForm] = useState(false);
   return (
     <div className="workData">
-      <h2>Work History</h2>
       {!showForm && (
-        <button className="addToTimeLine" onClick={() => changeButton()}>
-          <i className="fa-solid fa-square-plus"></i>
-        </button>
+        <div className="headingList">
+          <h2>Work History</h2>
+          <button className="addToTimeLine" onClick={() => changeButton()}>
+            <i className="fa-solid fa-square-plus"></i>
+          </button>
+        </div>
       )}
       {showForm && (
-        <button className="addToTimeLine" onClick={() => changeButton()}>
-          <i className="fa-solid fa-square-minus"></i>
-        </button>
+        <div className="headingList">
+          <h2>Work History</h2>
+          <button className="addToTimeLine" onClick={() => changeButton()}>
+            <i className="fa-solid fa-square-minus"></i>
+          </button>
+        </div>
       )}
 
       {showForm && (

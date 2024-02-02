@@ -28,14 +28,19 @@ export default function PersonalData() {
   return (
     <div className="personalData">
       {showForm && (
-        <button className="editBtn" onClick={() => changeButton()}>
-          Safe
-        </button>
+        <div className="headingBtnSave">
+          <h2>Please fill out the form</h2>
+          <button className="editBtn" onClick={() => changeButton()}>
+            Save
+          </button>
+        </div>
       )}
       {!showForm && (
-        <button className="editBtn" onClick={() => changeButton()}>
-          Edit
-        </button>
+        <div className="headingBtnEdit">
+          <button className="editBtn" onClick={() => changeButton()}>
+            Edit
+          </button>
+        </div>
       )}
       {showForm && <PersonalDataInput handleData={changeInput} />}
       {showDetail && <PersonalDataView data={personalData} />}
